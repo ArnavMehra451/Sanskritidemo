@@ -17,7 +17,7 @@ heritage_data = {
             "period": "3rd Century BCE (Mauryan Empire)",
             "desc": "One of India's oldest stone structures commissioned by Emperor Ashoka, famous for its majestic dome and carved Toranas (gateways).",
             "img": "https://images.unsplash.com/photo-1699988194923-50f944f92d9a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2FuY2hpJTIwc3R1cGF8ZW58MHx8MHx8fDA%3D",
-            "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            "model_url": "https://raw.githubusercontent.com/ArnavMehra451/Sanskritidemo/main/assets/Sanchi_Stupa.glb"
         },
         "Gwalior Fort": {
             "period": "8th Century CE onwards",
