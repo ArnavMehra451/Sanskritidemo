@@ -131,7 +131,7 @@ elif page == "AI Cultural Guide":
     st.title("💬 AI Cultural Tour Guide")
     st.write("Ask any questions about Indian monuments, dynasty history, or traditions.")
     
-    user_query = st.text_input("Type your question here:", "Tell me an interesting fact about Rajaraja Chola.")
+    user_query = st.text_input("Type your question here:", "")
     
     if st.button("Ask Guide"):
         if "GEMINI_API_KEY" in st.secrets:
@@ -141,7 +141,7 @@ elif page == "AI Cultural Guide":
                 
                 with st.spinner("Asking SanskritiVerse AI Guide..."):
                     response = client.models.generate_content(
-                        model="gemini-2.5-flash",
+                        model="gemini-3.6-flash",
                         contents=f"You are SanskritiVerse, an expert AI Indian Cultural Guide. Provide an engaging, accurate, and concise answer to: {user_query}"
                     )
                 st.success("**AI Guide Response:**")
