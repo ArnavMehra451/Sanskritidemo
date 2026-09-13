@@ -134,8 +134,22 @@ elif page == "AI Cultural Guide":
     user_query = st.text_input("Type your question here:", "Tell me an interesting fact about Rajaraja Chola.")
     
     if st.button("Ask Guide"):
-        st.success("**AI Guide Response:**")
-        st.write("Rajaraja Chola I built the Brihadeeswarar Temple in Thanjavur. The shadow of the main tower (Vimana) is designed in a way that it never touches the ground at noon during certain seasons, demonstrating extraordinary 11th-century engineering capabilities!")
+        if "GEMINI_API_KEY" in st.secrets:
+            try:
+                # Initialize Google GenAI client using Streamlit secrets
+                client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
+                
+                with st.spinner("Asking SanskritiVerse AI Guide..."):
+                    response = client.models.generate_content(
+                        model="gemini-2.5-flash",
+                        contents=f"You are SanskritiVerse, an expert AI Indian Cultural Guide. Provide an engaging, accurate, and concise answer to: {user_query}"
+                    )
+                st.success("**AI Guide Response:**")
+                st.write(response.text)
+            except Exception as e:
+                st.error(f"API Error: {e}")
+        else:
+            st.warning("⚠️ **API Key missing:** Add `GEMINI_API_KEY` to `.streamlit/secrets.toml` locally or in Streamlit Secrets Vault to enable live AI responses.")
 
 # PAGE 3: CULTURAL QUIZ
 elif page == "Cultural Quiz":
