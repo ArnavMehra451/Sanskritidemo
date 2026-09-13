@@ -224,3 +224,9 @@ elif page == "Cultural Quiz":
 
             if percentage == 100:
                 st.balloons()
+
+            # Reset Quiz Button
+            if st.button("🔄 Retake Quiz"):
+                st.session_state.submitted = False
+                st.session_state.user_answers = {}
+                st.rerun()
