@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from google import genai
+from quiz_data import QUIZ_BANK
 
 # Page Configuration
 st.set_page_config(page_title="SanskritiVerse", page_icon="🏛️", layout="wide")
@@ -153,15 +154,73 @@ elif page == "AI Cultural Guide":
 
 # PAGE 3: CULTURAL QUIZ
 elif page == "Cultural Quiz":
-    st.title("🏆 Gamified Heritage Quiz")
-    st.write("Test your knowledge and earn cultural discovery badges.")
-    
-    q1 = st.radio("1. Which dynasty built the Brihadeeswarar Temple?", ["Mughal Dynasty", "Chola Dynasty", "Gupta Dynasty"])
-    q2 = st.radio("2. Where are the Ajanta & Ellora Caves located?", ["Madhya Pradesh", "Karnataka", "Maharashtra"])
-    
-    if st.button("Submit Quiz"):
-        score = 0
-        if q1 == "Chola Dynasty": score += 1
-        if q2 == "Maharashtra": score += 1
-        st.balloons()
-        st.success(f"You scored {score}/2! You earned the **'Heritage Scholar'** Badge 🎉")
+    st.title("🏛️ SanskritiVerse Heritage Quiz")
+    st.subheader("Test your knowledge of Indian States & Cultural Heritage")
+
+    # Step 1: State Selection
+    state_list = list(QUIZ_BANK.keys())
+    selected_state = st.selectbox(
+        "Choose a State to start the quiz:", ["-- Select State --"] + state_list
+    )
+
+    if selected_state != "-- Select State --":
+        questions = QUIZ_BANK[selected_state]
+
+        # Initialize Session State Variables for current quiz run
+        if (
+            "current_state" not in st.session_state
+            or st.session_state.current_state != selected_state
+        ):
+            st.session_state.current_state = selected_state
+            st.session_state.submitted = False
+            st.session_state.user_answers = {}
+
+        st.markdown(f"### Quiz: **{selected_state}**")
+        st.divider()
+
+        # Step 2: Render Questions via Form
+        with st.form("quiz_form"):
+            for idx, q in enumerate(questions):
+                st.write(f"**Q{idx + 1}: {q['question']}**")
+                st.session_state.user_answers[idx] = st.radio(
+                    f"Select answer for Q{idx + 1}:",
+                    options=q["options"],
+                    key=f"q_{selected_state}_{idx}",
+                    index=None,
+                )
+                st.write("---")
+
+            submit_btn = st.form_submit_button("Submit Quiz")
+
+        # Step 3: Grade and Show Results
+        if submit_btn:
+            st.session_state.submitted = True
+
+        if st.session_state.get("submitted", False):
+            score = 0
+            total = len(questions)
+
+            st.markdown("## 📊 Quiz Results")
+
+            for idx, q in enumerate(questions):
+                user_ans = st.session_state.user_answers.get(idx)
+                correct_ans = q["answer"]
+
+                if user_ans == correct_ans:
+                    score += 1
+                    st.success(
+                        f"**Q{idx + 1}:** Correct! Your answer: *{user_ans}*"
+                    )
+                else:
+                    st.error(
+                        f"**Q{idx + 1}:** Incorrect.\n\n"
+                        f"* **Your Answer:** {user_ans if user_ans else 'No answer selected'}\n"
+                        f"* **Correct Answer:** {correct_ans}"
+                    )
+
+            # Final Score Summary
+            percentage = (score / total) * 100
+            st.metric("Final Score", f"{score} / {total}", f"{percentage:.1f}%")
+
+            if percentage == 100:
+                st.balloons()
