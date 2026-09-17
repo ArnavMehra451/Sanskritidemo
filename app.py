@@ -56,6 +56,30 @@ heritage_data = {
             "img": "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800",
             "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
         }
+    },
+    "Uttar Pradesh": {
+            "Taj Mahal,Agra": {
+                "period": "Mughal Empire (Construction: 1631 to 1648; Complex completed 1653).",
+                "desc": "Located in Agra, Uttar Pradesh, this white marble mausoleum was commissioned by the Mughal Emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal. Renowned as a UNESCO World Heritage site and a masterpiece of Mughal architecture, it blends Persian, Islamic, and Indian design elements and is celebrated worldwide as a symbol of love.",
+                "img": "https://images.unsplash.com/photo-1696887484490-715e7eb0e682?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGFqJTIwbWFoYWx8ZW58MHx8MHx8fDA%3D",
+                "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            }
+    },
+    "Maharashtra": {
+            "Gateway Of India,Mumbai": {
+                "period": "Colonial Era (Construction: 1911 to 1924; Unveiled December 4, 1924).",
+                "desc": "Located on the waterfront in Mumbai, this Indo-Saracenic archway was built to commemorate the 1911 landing of King George V and Queen Mary in India. Historically, it served as the ceremonial entrance to India for British viceroys and governors, and notably marked the end of British rule when the last British troops marched through it in 1948.",
+                "img": "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2F0ZXdheSUyMG9mJTIwaW5kaWF8ZW58MHx8MHx8fDA%3D",
+                "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            }
+    },
+    "Gujrat": {
+            "Statue Of Unity,Sandhu Bet": {
+                "period": "Modern Era (Construction: 2013-2018; Inaugurated October 31, 2018).",
+                "desc": "Standing at 182 meters in Gujarat, India, it is the world's tallest statue. Built as a tribute to Sardar Vallabhbhai Patel, one of India's founding fathers who played a key role in unifying 565 princely states into the modern Union of India, it symbolizes national unity and engineering prowess.",
+                "img": "https://images.unsplash.com/photo-1642841819300-20ed449c02a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3RhdHVlJTIwb2YlMjB1bml0eXxlbnwwfHwwfHx8MA%3D%3D",
+                "model_url": "https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+            }
     }
 }
 
