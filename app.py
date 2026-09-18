@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from google import genai
+from google.genai import types
 from quiz_data import QUIZ_BANK
 
 # Page Configuration
@@ -156,10 +157,25 @@ elif page == "AI Cultural Guide":
                 # Initialize Google GenAI client using Streamlit secrets
                 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
                 
+                system_prompt = """
+                You are SanskritiVerse, an expert AI Indian Cultural & Heritage Guide.
+                Your sole domain is Indian monuments, dynasty history, art, architecture, festivals, and traditions.
+                
+                Strict Rules:
+                1. Answer questions related to Indian culture and heritage thoroughly and concisely.
+                2. If the user asks an off-topic question (e.g., coding, mathematics, sports, general technology, modern politics), politely refuse to answer.
+                3. Gently redirect them back to asking about Indian culture or monuments.
+                """
+
+
                 with st.spinner("Asking SanskritiVerse AI Guide..."):
                     response = client.models.generate_content(
                         model="gemini-3.6-flash",
-                        contents=f"You are SanskritiVerse, an expert AI Indian Cultural Guide. Provide an engaging, accurate, and concise answer to: {user_query}"
+                        contents=f"You are SanskritiVerse, an expert AI Indian Cultural Guide. Provide an engaging, accurate, and concise answer to: {user_query}",
+                        config=types.GenerateContentConfig(
+                            system_instruction=system_prompt,
+                            temperature=0.3
+                        )
                     )
                 st.success("**AI Guide Response:**")
                 st.write(response.text)
