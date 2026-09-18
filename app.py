@@ -35,7 +35,7 @@ heritage_data = {
         }
     },
     "Tamil Nadu": {
-        "Brihadeeswarar Temple": {
+        "Brihadeshwara Temple": {
             "period": "1010 CE (Chola Dynasty)",
             "desc": "A UNESCO World Heritage site built by Rajaraja Chola I, famous for its massive granite vimana tower.",
             "img": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800",
